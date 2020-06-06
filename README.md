@@ -4,11 +4,11 @@
 
 ## LINE Developerのアカウント作成
 
-### [LINE Developers](https://developers.line.biz/ja/)にログインしてMessaging APIのチャネルを作成する。
+[LINE Developers](https://developers.line.biz/ja/)にログインしてMessaging APIのチャネルを作成する。
 
-### チャネルの作り方は[公式ドキュメント](https://developers.line.biz/ja/docs/messaging-api/getting-started/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90)を参照
+チャネルの作り方は[公式ドキュメント](https://developers.line.biz/ja/docs/messaging-api/getting-started/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90)を参照
 
-### 作成したチャネル内にある`user_id`, `channel_secret` および `channel_access_token`をメモしてapp.yamlに入力する。
+作成したチャネル内にある`user_id`, `channel_secret` および `channel_access_token`をメモしてapp.yamlに入力する。
 
  ~~~yaml
 env_variables:
@@ -19,9 +19,9 @@ env_variables:
 
 ## GCP(Google Cloud Platform)登録
 
-### [Google Cloud Platform](https://cloud.google.com/getting-started?hl=ja)に登録する。クレジットが必要。新規の場合は $300 相当の無料クレジットがつく。
+[Google Cloud Platform](https://cloud.google.com/getting-started?hl=ja)に登録する。クレジットが必要。新規の場合は $300 相当の無料クレジットがつく。
 
-### [コチラ](https://blog.apar.jp/web/6912/)を参考に新しいプロジェクトを作成し、Google Apps Engineを`Python`言語で設定する。そして[Google Cloud SDK](https://cloud.google.com/sdk/docs?hl=ja)をダウンロードする。windowsの場合はexeを実行すればインストールされる。macの場合は下記コマンドを実行する
+[コチラ](https://blog.apar.jp/web/6912/)を参考に新しいプロジェクトを作成し、Google Apps Engineを`Python`言語で設定する。そして[Google Cloud SDK](https://cloud.google.com/sdk/docs?hl=ja)をダウンロードする。windowsの場合はexeを実行すればインストールされる。macの場合は下記コマンドを実行する
 
 #### macの場合
 ~~~
@@ -29,15 +29,16 @@ $ tar -xzvf Downloads/ダウンロードしたファイル -C $HOME
 $ sh $HOME/google-cloud-sdk/install.sh
 ~~~
 
-### インストールが完了したら下記コマンドにて認証を行う
+インストールが完了したら下記コマンドにて認証を行う
+
 ~~~
 $ gcloud init
 ~~~
-### 認証を聞かれるのでYをおす
+認証を聞かれるのでYをおす
 ~~~
 You must log in to continue. Would you like to log in (Y/n)? Y
 ~~~
-### ブラウザが立ち上がるのでGCPからのアクセスを許可する。完了したら、一度ターミナルを再起動して、gcloudコマンドが使用可能になっていることを確認する。
+ブラウザが立ち上がるのでGCPからのアクセスを許可する。完了したら、一度ターミナルを再起動して、gcloudコマンドが使用可能になっていることを確認する。
 ~~~
 $ gcloud -v
 Google Cloud SDK 293.0.0
@@ -46,17 +47,17 @@ core 2020.05.15
 gsutil 4.50
 ~~~
 
-### Google Apps Engineのダッシュボードからのバージョンを選択して、一番新しいバージョンをクリックすると現在のURLをメモする。
+Google Apps Engineのダッシュボードからのバージョンを選択して、一番新しいバージョンをクリックすると現在のURLをメモする。
 
 ## マグロの画像準備
 
-### デフォルトではイラストやの画像があるので、初期設定のままでいい場合は設定不要。画像を変更したい場合は、static/images/に使用したいマグロ画像の準備を行う。なおLINEではプレビュー用とオリジナル用で2枚必要になる。
+デフォルトではイラストやの画像があるので、初期設定のままでいい場合は設定不要。画像を変更したい場合は、static/images/に使用したいマグロ画像の準備を行う。なおLINEではプレビュー用とオリジナル用で2枚必要になる。
 
 # 2. 使い方
 
 ## GCPへデプロイ
 
-### ダウンロードしてきたソースコードを一度デプロイしてURLを取得する。このときデプロイさきのプロジェクトがあっているか確認する。
+ダウンロードしてきたソースコードを一度デプロイしてURLを取得する。このときデプロイさきのプロジェクトがあっているか確認する。
 
 ~~~
 $ cd your/download/path...
@@ -96,21 +97,21 @@ please run:
 
 ~~~
 
-### ここでデプロイが完了したら、下記コマンドでURLを確認しつつ、動作確認を行う。
+ここでデプロイが完了したら、下記コマンドでURLを確認しつつ、動作確認を行う。
 
 ~~~~
 $ gcloud app browse
 ~~~~
 
-### ブラウザが開き、hello worldが表示される。ここでURLをコピーしておく。
+ブラウザが開き、hello worldが表示される。ここでURLをコピーしておく。
 
-### LINE Developerを開きMessaging API内のwebhook URLに設定する。このときにURLの後ろに/callbackをつけるようにする
+LINE Developerを開きMessaging API内のwebhook URLに設定する。このときにURLの後ろに/callbackをつけるようにする
 
 `{コピーしたURL}/callback`
 
 参考画像
 
-### またmain.pyを下記のように編集する。
+またmain.pyを下記のように編集する。
 
 ~~~~python
 def maguro_image_message():
