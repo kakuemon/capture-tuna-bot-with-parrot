@@ -109,7 +109,7 @@ LINE Developerを開きMessaging API内のwebhook URLに設定する。このと
 
 `{コピーしたURL}/callback`
 
-参考画像
+<img width="1028" alt="スクリーンショット 2020-06-06 9 07 22" src="https://user-images.githubusercontent.com/55194591/83931484-f47f1d80-a7d7-11ea-86e9-f231b6c53511.png">
 
 またmain.pyを下記のように編集する。
 
