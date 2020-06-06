@@ -106,6 +106,7 @@ $ gcloud app browse
 ~~~~
 
 ブラウザが開き、hello worldが表示される。ここでURLをコピーしておく。
+<img width="956" alt="スクリーンショット 2020-06-06 9 03 58" src="https://user-images.githubusercontent.com/55194591/83931721-2e9cef00-a7d9-11ea-864e-4032f46667b5.png">
 
 LINE Developerを開きMessaging API内のwebhook URLに設定する。このときにURLの後ろに/callbackをつけるようにする
 
