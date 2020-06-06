@@ -48,6 +48,7 @@ gsutil 4.50
 ~~~
 
 Google Apps Engineのダッシュボードからのバージョンを選択して、一番新しいバージョンをクリックすると現在のURLをメモする。
+<img width="491" alt="スクリーンショット 2020-06-06 8 23 00" src="https://user-images.githubusercontent.com/55194591/83931679-01e8d780-a7d9-11ea-836d-7aedba60dfbd.png">
 
 
 ## マグロの画像準備
