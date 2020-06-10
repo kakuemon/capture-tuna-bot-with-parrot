@@ -33,6 +33,17 @@ export pj_id='your GCP project ID'
 gcloud config set project ${pj_id}
 ```
 
+
++ 設定ファイルをコピーして項目を埋める
+
+```
+cp -a app.yaml.sample app.yaml
+```
+```
+vim app.yaml
+```
+
+
 + GCR にコンテナイメージをデプロイする
 
 ```
