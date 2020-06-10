@@ -16,7 +16,7 @@ main.py
   + 127.0.0.1 -> 0.0.0.0
 
 
-## 実行方法
+## 実行方法 Cloud Run
 
 + GCP との認証
 
@@ -27,7 +27,7 @@ gcloud auth login
 + GCP のプロジェクトの設定
 
 ```
-export pj_id='hogehoge'
+export pj_id='your GCP project ID'
 ```
 ```
 gcloud config set project ${pj_id}
@@ -47,6 +47,48 @@ gcloud run deploy \
   --image gcr.io/${pj_id}/gcp-line-bots \
   --platform managed \
   --region asia-northeast1
+```
+```
+### 出力例
+
+$ gcloud run deploy \
+>   --image gcr.io/${pj_id}/gcp-line-bots \
+>   --platform managed \
+>   --region asia-northeast1
+Service name (gcp-line-bots):  
+Deploying container to Cloud Run service [gcp-line-bots] in project [ca-igarashi-test-v5v2] region [asia-northeast1]
+✓ Deploying... Done.                                                                                                                                                                   
+  ✓ Creating Revision...                                                                                                                                                               
+  ✓ Routing traffic...                                                                                                                                                                 
+Done.                                                                                                                                                                                  
+Service [gcp-line-bots] revision [gcp-line-bots-00003-gej] has been deployed and is serving 100 percent of traffic at https://gcp-line-bots-3umtulj4sq-an.a.run.app
+
+```
+
+
+## 実行方法 GAE
+
+
++ GCP との認証
+
+```
+gcloud auth login
+```
+
++ GCP のプロジェクトの設定
+
+```
+export pj_id='hogehoge'
+```
+```
+gcloud config set project ${pj_id}
+gcloud config set compute/region asia-northeast1
+```
+
++ GAE にデプロイ
+
+```
+gcloud app deploy
 ```
 
 

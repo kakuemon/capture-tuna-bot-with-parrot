@@ -17,10 +17,9 @@ import os
 # conunt maguro 
 maguro_count=0
 
-# YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
-YOUR_CHANNEL_ACCESS_TOKEN = ""
-# YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
-YOUR_CHANNEL_SECRET = ""
+YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
+YOUR_CHANNEL_SECRET       = os.environ["YOUR_CHANNEL_SECRET"]
+APP_ENGINE_URL            = os.environ["APP_ENGINE_URL"]
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
@@ -28,19 +27,19 @@ app = Flask(__name__)
 
 # LINE APIおよびWebhookの接続s
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
-handler = WebhookHandler(YOUR_CHANNEL_SECRET)
+handler      = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 def maguro_image_message():
     messages = ImageSendMessage(
-        original_content_url="https://linebot-20200604-first.df.r.appspot.com/images/maguro.png", #JPEG 最大画像サイズ：240×240 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
-        preview_image_url="https://linebot-20200604-first.df.r.appspot.com/images/maguro_mini.png" #JPEG 最大画像サイズ：1024×1024 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
+        original_content_url = APP_ENGINE_URL + "/images/maguro.png", #JPEG 最大画像サイズ：240×240 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
+        preview_image_url    = APP_ENGINE_URL + "/images/maguro_mini.png" #JPEG 最大画像サイズ：1024×1024 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
     )
     return messages
 
 def neta_image_message():
     messages = ImageSendMessage(
-        original_content_url="https://linebot-20200604-first.df.r.appspot.com/images/sushi.png", #JPEG 最大画像サイズ：240×240 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
-        preview_image_url="https://linebot-20200604-first.df.r.appspot.com/images/sushi.png" #JPEG 最大画像サイズ：1024×1024 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
+        original_content_url = APP_ENGINE_URL + "/images/sushi.png", #JPEG 最大画像サイズ：240×240 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
+        preview_image_url    = APP_ENGINE_URL + "/images/sushi.png" #JPEG 最大画像サイズ：1024×1024 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
     )
     return messages
 
