@@ -21,16 +21,7 @@ env_variables:
 
 [Google Cloud Platform](https://cloud.google.com/getting-started?hl=ja)に登録する。クレジットが必要。新規の場合は $300 相当の無料クレジットがつく。
 
-[コチラ](https://blog.apar.jp/web/6912/)を参考に新しいプロジェクトを作成し、Google Apps Engineを`Python`言語で設定する。そして[Google Cloud SDK](https://cloud.google.com/sdk/docs?hl=ja)をダウンロードする。windowsの場合はexeを実行すればインストールされる。macの場合は下記コマンドを実行する
-
-#### macの場合
-~~~
-$ tar -xzvf Downloads/ダウンロードしたファイル -C $HOME
-$ sh $HOME/google-cloud-sdk/install.sh
-~~~
-
-インストールが完了したら下記コマンドにて認証を行う
-
+[コチラ](https://blog.apar.jp/web/6912/)を参考に新しいプロジェクトを作成し、Google Apps Engineを`Python`言語で設定する。GCPではwebにてターミナル環境を提供しているため、そちらを利用する。
 ~~~
 $ gcloud init
 ~~~
@@ -47,8 +38,7 @@ core 2020.05.15
 gsutil 4.50
 ~~~
 
-Google Apps Engineのダッシュボードからのバージョンを選択して、一番新しいバージョンをクリックすると現在のURLをメモする。
-<img width="491" alt="スクリーンショット 2020-06-06 8 23 00" src="https://user-images.githubusercontent.com/55194591/83931679-01e8d780-a7d9-11ea-836d-7aedba60dfbd.png">
+Google Apps Engineのサービスからでdefaultをクリックし現在のURLをメモする。
 
 
 ## マグロの画像準備
