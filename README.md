@@ -22,14 +22,8 @@ env_variables:
 [Google Cloud Platform](https://cloud.google.com/getting-started?hl=ja)に登録する。クレジットが必要。新規の場合は $300 相当の無料クレジットがつく。
 
 [コチラ](https://blog.apar.jp/web/6912/)を参考に新しいプロジェクトを作成し、Google Apps Engineを`Python`言語で設定する。GCPではwebにてターミナル環境を提供しているため、そちらを利用する。
-~~~
-$ gcloud init
-~~~
-認証を聞かれるのでYをおす
-~~~
-You must log in to continue. Would you like to log in (Y/n)? Y
-~~~
-ブラウザが立ち上がるのでGCPからのアクセスを許可する。完了したら、一度ターミナルを再起動して、gcloudコマンドが使用可能になっていることを確認する。
+
+gcloudコマンドが使用可能になっていることを確認する。
 ~~~
 $ gcloud -v
 Google Cloud SDK 293.0.0
@@ -89,14 +83,7 @@ please run:
 
 ~~~
 
-ここでデプロイが完了したら、下記コマンドでURLを確認しつつ、動作確認を行う。
-
-~~~~
-$ gcloud app browse
-~~~~
-
-ブラウザが開き、hello worldが表示される。ここでURLをコピーしておく。
-<img width="956" alt="スクリーンショット 2020-06-06 9 03 58" src="https://user-images.githubusercontent.com/55194591/83931721-2e9cef00-a7d9-11ea-864e-4032f46667b5.png">
+ここでデプロイが完了したら、先ほどメモしたURLを開くと、hello worldが確認できる
 
 LINE Developerを開きMessaging API内のwebhook URLに設定する。このときにURLの後ろに/callbackをつけるようにする
 
