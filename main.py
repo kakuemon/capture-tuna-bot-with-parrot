@@ -93,7 +93,7 @@ def handle_message(event):
         messages = random.choice(["捕獲成功","逃げられた","残念"])
         if messages == "捕獲成功":
             maguro_count += 1
-            messages1 = "現在マグロは" + maguro_count + "匹"
+            messages1 = "現在マグロは" + str(maguro_count) + "匹"
             line_bot_api.reply_message(
                 event.reply_token,
                 [
