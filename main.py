@@ -2,6 +2,8 @@ from flask import Flask, request
 import random, json, requests
 import pandas as pd
 
+
+
 # line用ライブラリ
 from linebot import (
     LineBotApi, WebhookHandler
@@ -20,6 +22,9 @@ maguro_count=0
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET       = os.environ["YOUR_CHANNEL_SECRET"]
 STORAGE_BUCKET            = os.environ["STORAGE_BUCKET"]
+
+# random choice
+
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
@@ -64,6 +69,7 @@ def callback():
 # メッセージ応答メソッド
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    global maguro_count
     #　メッセージは "event.message.text" という変数に格納される
     if event.message.text == "おはよう":
         text = "おはようございます"
@@ -77,19 +83,54 @@ def handle_message(event):
             StickerSendMessage(package_id=1 ,sticker_id=1)
         )
     elif event.message.text == "マグロ":
-        global maguro_count
-        maguro_count += 1
-        if maguro_count == 5:
+        messages = maguro_image_message()
+        line_bot_api.reply_message(
+            event.reply_token,
+            messages
+            )
+
+    elif event.message.text == "捕獲":
+        messages = random.choice(["捕獲成功","逃げられた","残念"])
+        if messages == "捕獲成功":
+            maguro_count += 1
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=messages)
+        )
+    elif event.message.text == "逃がす":
+        maguro_count = 0
+        messages = "マグロは逃げた"
+        messages = maguro_image_message()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=messages) 
+        )
+
+    elif event.message.text == "逃がす":
+        maguro_count = 0
+        messages = "マグロは逃げた"
+        messages = maguro_image_message()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=messages) 
+        )
+
+    elif event.message.text == "マグロ一丁":
+        if maguro_count < 2:
+            messages = "へい、おまち！"
             maguro_count = 0
-            messages = neta_image_message()
+            neta_message = neta_image_message()
             line_bot_api.reply_message(
                 event.reply_token,
-                messages)
+                [TextSendMessage(text=messages),neta_message]
+                )
         else:
-            messages = maguro_image_message()
+            messages = "マグロとってきて！"
             line_bot_api.reply_message(
                 event.reply_token,
-                messages)
+                TextSendMessage(text=messages)
+                )
+
 
     else:
         line_bot_api.reply_message(
