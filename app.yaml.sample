@@ -4,6 +4,7 @@ env_variables:
   USER_ID: ""
   YOUR_CHANNEL_SECRET: ""
   YOUR_CHANNEL_ACCESS_TOKEN: ""
+  STORAGE_BUCKET: ""  ## example https://storage.googleapis.com/{Bucket Name}
 
 handlers:
 # All URLs ending in .gif .png or .jpg are treated as paths to

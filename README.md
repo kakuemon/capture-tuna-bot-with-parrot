@@ -21,24 +21,9 @@ env_variables:
 
 [Google Cloud Platform](https://cloud.google.com/getting-started?hl=ja)に登録する。クレジットが必要。新規の場合は $300 相当の無料クレジットがつく。
 
-[コチラ](https://blog.apar.jp/web/6912/)を参考に新しいプロジェクトを作成し、Google Apps Engineを`Python`言語で設定する。そして[Google Cloud SDK](https://cloud.google.com/sdk/docs?hl=ja)をダウンロードする。windowsの場合はexeを実行すればインストールされる。macの場合は下記コマンドを実行する
+[コチラ](https://blog.apar.jp/web/6912/)を参考に新しいプロジェクトを作成し、Google Apps Engineを`Python`言語で設定する。GCPではwebにてターミナル環境を提供しているため、そちらを利用する。
 
-#### macの場合
-~~~
-$ tar -xzvf Downloads/ダウンロードしたファイル -C $HOME
-$ sh $HOME/google-cloud-sdk/install.sh
-~~~
-
-インストールが完了したら下記コマンドにて認証を行う
-
-~~~
-$ gcloud init
-~~~
-認証を聞かれるのでYをおす
-~~~
-You must log in to continue. Would you like to log in (Y/n)? Y
-~~~
-ブラウザが立ち上がるのでGCPからのアクセスを許可する。完了したら、一度ターミナルを再起動して、gcloudコマンドが使用可能になっていることを確認する。
+gcloudコマンドが使用可能になっていることを確認する。
 ~~~
 $ gcloud -v
 Google Cloud SDK 293.0.0
@@ -47,8 +32,7 @@ core 2020.05.15
 gsutil 4.50
 ~~~
 
-Google Apps Engineのダッシュボードからのバージョンを選択して、一番新しいバージョンをクリックすると現在のURLをメモする。
-<img width="491" alt="スクリーンショット 2020-06-06 8 23 00" src="https://user-images.githubusercontent.com/55194591/83931679-01e8d780-a7d9-11ea-836d-7aedba60dfbd.png">
+Google Apps Engineのサービスからでdefaultをクリックし現在のURLをメモする。
 
 
 ## マグロの画像準備
@@ -99,14 +83,7 @@ please run:
 
 ~~~
 
-ここでデプロイが完了したら、下記コマンドでURLを確認しつつ、動作確認を行う。
-
-~~~~
-$ gcloud app browse
-~~~~
-
-ブラウザが開き、hello worldが表示される。ここでURLをコピーしておく。
-<img width="956" alt="スクリーンショット 2020-06-06 9 03 58" src="https://user-images.githubusercontent.com/55194591/83931721-2e9cef00-a7d9-11ea-864e-4032f46667b5.png">
+ここでデプロイが完了したら、先ほどメモしたURLを開くと、hello worldが確認できる
 
 LINE Developerを開きMessaging API内のwebhook URLに設定する。このときにURLの後ろに/callbackをつけるようにする
 
