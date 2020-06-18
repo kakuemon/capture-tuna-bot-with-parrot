@@ -69,7 +69,6 @@ def callback():
 # メッセージ応答メソッド
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    global maguro_count
     #　メッセージは "event.message.text" という変数に格納される
     if event.message.text == "おはよう":
         text = "おはようございます"
@@ -90,6 +89,7 @@ def handle_message(event):
             )
 
     elif event.message.text == "捕獲":
+        global maguro_count
         messages = random.choice(["捕獲成功","逃げられた","残念"])
         if messages == "捕獲成功":
             maguro_count += 1
@@ -106,6 +106,7 @@ def handle_message(event):
             )
 
     elif event.message.text == "逃がす":
+        global maguro_count
         maguro_count = 0
         messages = "マグロは逃げた"
         messages = maguro_image_message()
@@ -115,6 +116,7 @@ def handle_message(event):
         )
 
     elif event.message.text == "マグロ一丁":
+        global maguro_count
         if maguro_count > 2:
             messages = "へい、おまち！"
             maguro_count = 0
