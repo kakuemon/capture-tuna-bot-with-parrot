@@ -116,7 +116,7 @@ def handle_message(event):
         )
 
     elif event.message.text == "マグロ一丁":
-        if maguro_count < 2:
+        if maguro_count > 2:
             messages = "へい、おまち！"
             maguro_count = 0
             neta_message = neta_image_message()
