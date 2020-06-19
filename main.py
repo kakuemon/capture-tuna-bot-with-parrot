@@ -36,15 +36,43 @@ handler      = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 def maguro_image_message():
     messages = ImageSendMessage(
-        original_content_url = STORAGE_BUCKET + "/maguro.png", #JPEG 最大画像サイズ：240×240 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
-        preview_image_url    = STORAGE_BUCKET + "/maguro_mini.png" #JPEG 最大画像サイズ：1024×1024 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
+        original_content_url = STORAGE_BUCKET + "/maguro.png", 
+        preview_image_url    = STORAGE_BUCKET + "/maguro_mini.png" 
+    )
+    return messages
+
+def maguro_image_message1():
+    messages = ImageSendMessage(
+        original_content_url = STORAGE_BUCKET + "/maguro1_half.png", 
+        preview_image_url    = STORAGE_BUCKET + "/maguro1_half.png" 
+    )
+    return messages
+
+def maguro_image_message2():
+    messages = ImageSendMessage(
+        original_content_url = STORAGE_BUCKET + "/maguro2_half.png", 
+        preview_image_url    = STORAGE_BUCKET + "/maguro2_half.png" 
+    )
+    return messages
+
+def maguro_image_message3():
+    messages = ImageSendMessage(
+        original_content_url = STORAGE_BUCKET + "/maguro3_half.png", 
+        preview_image_url    = STORAGE_BUCKET + "/maguro3_half.png" 
+    )
+    return messages
+
+def maguro_image_message4():
+    messages = ImageSendMessage(
+        original_content_url = STORAGE_BUCKET + "/maguro4_half.png", 
+        preview_image_url    = STORAGE_BUCKET + "/maguro4_half.png" 
     )
     return messages
 
 def neta_image_message():
     messages = ImageSendMessage(
-        original_content_url = STORAGE_BUCKET + "/sushi.png", #JPEG 最大画像サイズ：240×240 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
-        preview_image_url    = STORAGE_BUCKET + "/sushi.png" #JPEG 最大画像サイズ：1024×1024 最大ファイルサイズ：1MB(注意:仕様が変わっていた)
+        original_content_url = STORAGE_BUCKET + "/sushi.png", 
+        preview_image_url    = STORAGE_BUCKET + "/sushi.png" 
     )
     return messages
 
@@ -120,11 +148,21 @@ def handle_message(event):
 
     elif event.message.text == "逃がす":
         count = count_zero()
-        messages = "マグロは逃げた"
-        messages = maguro_image_message()
+        messages = "マグロは海へ帰った"
+        messages1 = maguro_image_message1()
+        messages2 = maguro_image_message2()
+        messages3 = maguro_image_message3()
+        messages4 = maguro_image_message4()
+
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=messages) 
+            [
+                messages4,
+                messages3,
+                messages2,
+                messages1,
+                TextSendMessage(text=messages)
+                ]
         )
 
     elif event.message.text == "マグロ一丁":
