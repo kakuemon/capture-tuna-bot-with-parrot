@@ -4,7 +4,7 @@ import pandas as pd
 
 
 
-# line用ライブラリ
+# line libray
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -23,17 +23,15 @@ YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET       = os.environ["YOUR_CHANNEL_SECRET"]
 STORAGE_BUCKET            = os.environ["STORAGE_BUCKET"]
 
-# random choice
-
-
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
 app = Flask(__name__)
 
-# LINE APIおよびWebhookの接続s
+# LINE APIおよびWebhookの接続
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler      = WebhookHandler(YOUR_CHANNEL_SECRET)
 
+# image import method
 def maguro_image_message():
     messages = ImageSendMessage(
         original_content_url = STORAGE_BUCKET + "/maguro.png", 
