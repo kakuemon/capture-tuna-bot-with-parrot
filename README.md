@@ -9,7 +9,7 @@
 チャネルの作り方は[公式ドキュメント](https://developers.line.biz/ja/docs/messaging-api/getting-started/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90)を参照
 
 作成したチャネル内にある`user_id`, `channel_secret`, `channel_access_token`をメモしてapp.yamlに入力する。
-またGCPに作成したbucket URLも記載する
+またGCPに作成した`bucket URL`も記載する
 
  ~~~yaml
 env_variables:
