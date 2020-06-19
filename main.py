@@ -48,17 +48,19 @@ def neta_image_message():
     )
     return messages
 
-def count_up(count):
-    count += 1
-    return None
-
-def count_zero(count):
-    count = 0
-    return None
-
+# count function
 def count_now():
     global maguro_count
     return maguro_count
+def count_up():
+    global maguro_count
+    maguro_count += 1
+    return maguro_count
+def count_zero():
+    global maguro_count
+    maguro_count = 0
+    return maguro_count
+
 
 # Flaskのルート設定
 @app.route("/")
@@ -103,8 +105,8 @@ def handle_message(event):
     elif event.message.text == "捕獲":
         messages = random.choice(["捕獲成功","逃げられた","残念"])
         if messages == "捕獲成功":
-            maguro_count = count_up(maguro_count)
-            messages1 = "現在マグロは" + str(maguro_count) + "匹"
+            count = count_up()
+            messages1 = "現在マグロは" + str(count) + "匹"
             line_bot_api.reply_message(
                 event.reply_token,
                 [
@@ -117,7 +119,7 @@ def handle_message(event):
             )
 
     elif event.message.text == "逃がす":
-        maguro_count = count_zero(maguro_count)
+        count = count_zero()
         messages = "マグロは逃げた"
         messages = maguro_image_message()
         line_bot_api.reply_message(
@@ -129,7 +131,7 @@ def handle_message(event):
         count = count_now()
         if count > 2:
             messages = "へい、おまち！"
-            maguro_count = 0
+            count_zero()
             neta_message = neta_image_message()
             line_bot_api.reply_message(
                 event.reply_token,
