@@ -8,13 +8,16 @@
 
 チャネルの作り方は[公式ドキュメント](https://developers.line.biz/ja/docs/messaging-api/getting-started/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90)を参照
 
-作成したチャネル内にある`user_id`, `channel_secret` および `channel_access_token`をメモしてapp.yamlに入力する。
+作成したチャネル内にある`user_id`, `channel_secret`, `channel_access_token`をメモしてapp.yamlに入力する。
+またGCPに作成したbucket URLも記載する
 
  ~~~yaml
 env_variables:
   USER_ID: "***"
   YOUR_CHANNEL_SECRET: "***"
   YOUR_CHANNEL_ACCESS_TOKEN: "***"
+  STORAGE_BUCKET: "https://storage.cloud.google.com/********"  ## example https://storage.googleapis.com/{Bucket Name}
+
 ~~~
 
 ## GCP(Google Cloud Platform)登録
@@ -90,25 +93,6 @@ LINE Developerを開きMessaging API内のwebhook URLに設定する。このと
 `{コピーしたURL}/callback`
 
 <img width="1028" alt="スクリーンショット 2020-06-06 9 07 22" src="https://user-images.githubusercontent.com/55194591/83931484-f47f1d80-a7d7-11ea-86e9-f231b6c53511.png">
-
-またmain.pyを下記のように編集する。
-
-~~~~python
-def maguro_image_message():
-    messages = ImageSendMessage(
-        original_content_url="{コピーしたURL}/images/maguro.png", 
-        preview_image_url="{コピーしたURL}/images/maguro_mini.png" 
-    )
-    return messages
-
-def neta_image_message():
-    messages = ImageSendMessage(
-        original_content_url="{コピーしたURL}/images/sushi.png", 
-        preview_image_url="{コピーしたURL}/images/sushi.png" 
-    )
-    return messages
-~~~~
-
 
 
 ## 動作確認
